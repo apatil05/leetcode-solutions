@@ -1,30 +1,29 @@
 class Solution:
     def splitArray(self, nums: List[int], k: int) -> int:
-        
-        def canSplit(minimum) -> bool:
+
+        def canSplit(m):
             count = 1
-            currSum = 0
+            currentSum = 0
             for num in nums:
-                if currSum + num <= minimum:
-                    currSum+=num
+                if currentSum + num <= m:
+                    currentSum+=num
                 else:
                     count+=1
-                    currSum = num
+                    currentSum = num
             
-            return count<=k
+            return count <= k
 
-        l = max(nums)
-        r = sum(nums)
+        l,r = max(nums), sum(nums)
         minimum = float(inf)
-        while l <= r:
+
+        while l<=r:
             m = l + (r-l)//2
+
             if canSplit(m):
-                minimum = m
                 r = m-1
+                minimum = m
             else:
                 l = m+1
         
         return minimum
-            
-            
 
