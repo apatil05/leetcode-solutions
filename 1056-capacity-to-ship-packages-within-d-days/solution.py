@@ -8,31 +8,24 @@ class Solution:
                 if currWeight + weight <= shipWeight:
                     currWeight += weight
                 else:
-                    d+=1
+                    d += 1
                     currWeight = weight
 
-            return d<=days
-            
+            return d <= days
 
-
-
-
-
-        
         maxW = sum(weights)
         minW = max(weights)
         shipWeight = float(inf)
 
         while minW <= maxW:
-            
-            m = minW + (maxW - minW) //2
+
+            m = minW + (maxW - minW) // 2
 
             if canShip(m):
                 shipWeight = m
-                maxW = m-1
+                maxW = m - 1
             else:
-                minW = m+1
-            
-        return shipWeight
+                minW = m + 1
 
+        return shipWeight
 
